@@ -1,0 +1,454 @@
+PS D:\CODING\SQL> CD d:\CODING\SQL\3_assignment
+PS D:\CODING\SQL\3_assignment> mysql -u root -p
+Enter password: **************
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+PS D:\CODING\SQL\3_assignment> mysql -u root -p
+Enter password: **************
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+PS D:\CODING\SQL\3_assignment> mysql -u root -p
+Enter password: **************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW databases
+    -> SHOW databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SHOW databases' at line 2
+mysql> Show databases;
++--------------------+
+| Database           |
++--------------------+
+| bhagyoday118       |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sales              |
+| sys                |
++--------------------+
+7 rows in set (0.06 sec)
+
+mysql> create database assignment3;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| assignment3        |
+| bhagyoday118       |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| information_schema |
+| mysql              |
+| performance_schema |
+| mysql              |
+| performance_schema |
+| performance_schema |
+| sales              |
+| sys                |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> USE ASSIGNMENT3;
+Database changed
+8 rows in set (0.00 sec)
+
+mysql> USE ASSIGNMENT3;
+Database changed
+mysql> USE ASSIGNMENT3;
+Database changed
+Database changed
+mysql> source 1_CREATE_TABLES.sql;
+Query OK, 0 rows affected (0.09 sec)
+
++-----------------------+
+Query OK, 0 rows affected (0.09 sec)
+
++-----------------------+
+
++-----------------------+
+| Tables_in_assignment3 |
++-----------------------+
++-----------------------+
+| Tables_in_assignment3 |
++-----------------------+
+| employee              |
+| Tables_in_assignment3 |
++-----------------------+
+| employee              |
++-----------------------+
+| employee              |
++-----------------------+
+| employee              |
++-----------------------+
++-----------------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> source 2_INSERT_DATA.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT EMPLOYEE VALUES('1', 'abc1', '01-01-2026', 'manager1', '100')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT EMPLOYEE VALUES('2', 'abc2', '01-01-2026', 'manager2', '200')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT EMPLOYEE VALUES('3', 'abc3', '01-01-2026', 'manager3', '300')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT EMPLOYEE VALUES('4', 'abc4', '01-01-2026', 'manager4', '400')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT EMPLOYEE VALUES('5', 'abc5', '01-01-2026', 'manager5', '500')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('3', 'abc3', '01-01-2026', 'manager3', '300')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('4', 'abc4', '01-01-2026', 'manager4', '400')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('5', 'abc5', '01-01-2026', 'manager5', '500')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('9', 'abc9', '01-01-2026', 'manager9', '900')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('10', 'abc10', '01-01-2026', 'manager10', '1000')' at line 1
+mysql>
+
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('9', 'abc9', '01-01-2026', 'manager9', '900')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('10', 'abc10', '01-01-2026', 'manager10', '1000')' at line 1
+mysql>
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('9', 'abc9', '01-01-2026', 'manager9', '900')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('10', 'abc10', '01-01-2026', 'manager10', '1000')' at line 1
+mysql>
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('9', 'abc9', '01-01-2026', 'manager9', '900')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('10', 'abc10', '01-01-2026', 'manager10', '1000')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TEERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('9', 'abc9', '01-01-2026', 'manager9', '900')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TEERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('9', 'abc9', '01-01-2026', 'manager9', '900')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT TE VALUES('10', 'abc10', '01-01-2026', 'manager10', '1000')' at line 1
+mysql> source 2_INSERT_DATA.sql;
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+ERROR 1292 (22007): Incorrect date value: '01-01-2026' for column 'dataOfJoining' at row 1
+mysql> source 2_INSERT_DATA.sql;
+Query OK, 1 row affected (0.04 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> source 3_DISPLAY_TABLE_DATA.sql;
+mysql> source 3_DISPLAY_TABLE_DATA.sql;
++--------+----------+---------------+----------+--------+
+| emp_no | emp_name | dataOfJoining | position | salary |
++--------+----------+---------------+----------+--------+
+|      1 | abc1     | 2004-09-17    | manager1 |    100 |
+|      2 | abc2     | 2004-09-17    | manager2 |    200 |
+|      3 | abc3     | 2004-09-17    | manager3 |    300 |
+|      4 | abc4     | 2004-09-17    | manager4 |    400 |
+|      5 | abc5     | 2004-09-17    | manager5 |    500 |
++--------+----------+---------------+----------+--------+
+5 rows in set (0.02 sec)
+
++--------+----------+---------------+-----------+--------+
+| emp_no | emp_name | dataOfJoining | position  | salary |
++--------+----------+---------------+-----------+--------+
+|      3 | abc3     | 2004-09-17    | manager3  |    300 |
+|      4 | abc4     | 2004-09-17    | manager4  |    400 |
+|      5 | abc5     | 2004-09-17    | manager5  |    500 |
+|      9 | abc9     | 2004-09-17    | manager9  |    900 |
+|     10 | abc10    | 2004-09-17    | manager10 |   1000 |
++--------+----------+---------------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> source 4_UNION.sql
++--------+----------+---------------+-----------+--------+
+| emp_no | emp_name | dataOfJoining | position  | salary |
++--------+----------+---------------+-----------+--------+
+|      1 | abc1     | 2004-09-17    | manager1  |    100 |
+|      2 | abc2     | 2004-09-17    | manager2  |    200 |
+|      3 | abc3     | 2004-09-17    | manager3  |    300 |
+|      4 | abc4     | 2004-09-17    | manager4  |    400 |
+|      5 | abc5     | 2004-09-17    | manager5  |    500 |
+|      9 | abc9     | 2004-09-17    | manager9  |    900 |
+|     10 | abc10    | 2004-09-17    | manager10 |   1000 |
++--------+----------+---------------+-----------+--------+
+7 rows in set (0.01 sec)
+
++--------+----------+---------------+-----------+--------+
+| emp_no | emp_name | dataOfJoining | position  | salary |
++--------+----------+---------------+-----------+--------+
+|      1 | abc1     | 2004-09-17    | manager1  |    100 |
+|      2 | abc2     | 2004-09-17    | manager2  |    200 |
+|      3 | abc3     | 2004-09-17    | manager3  |    300 |
+|      4 | abc4     | 2004-09-17    | manager4  |    400 |
+|      5 | abc5     | 2004-09-17    | manager5  |    500 |
+|      3 | abc3     | 2004-09-17    | manager3  |    300 |
+|      4 | abc4     | 2004-09-17    | manager4  |    400 |
+|      5 | abc5     | 2004-09-17    | manager5  |    500 |
+|      9 | abc9     | 2004-09-17    | manager9  |    900 |
+|     10 | abc10    | 2004-09-17    | manager10 |   1000 |
++--------+----------+---------------+-----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> source 6_DISPLAY_COMMON.sql
++--------+
+| emp_no |
++--------+
+|      3 |
+|      4 |
+|      5 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> source 6_DISPLAY_COMMON.sql
++--------+
+| emp_no |
++--------+
+|      3 |
+|      4 |
+|      5 |
++--------+
+3 rows in set (0.00 sec)
+
++----------+
+| emp_name |
++----------+
+| abc3     |
+| abc4     |
++----------+
+| abc3     |
+| abc4     |
+| abc3     |
+| abc4     |
+| abc4     |
+| abc5     |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> source 5_INTERSECTION.sql
++--------+----------+---------------+----------+--------+
+| emp_no | emp_name | dataOfJoining | position | salary |
++--------+----------+---------------+----------+--------+
+|      3 | abc3     | 2004-09-17    | manager3 |    300 |
+|      4 | abc4     | 2004-09-17    | manager4 |    400 |
+|      5 | abc5     | 2004-09-17    | manager5 |    500 |
++--------+----------+---------------+----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 7_AGGRETE_FUNCTION.sql
+    -> 7_AGGRETE_FUNCTION.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '7_AGGRETE_FUNCTION.sql
+7_AGGRETE_FUNCTION.sql' at line 1
+mysql> SELECT MAX(salary) FROM EMPLOYEE;
++-------------+
+| MAX(salary) |
++-------------+
+|         500 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LCASE(emp_name) FROM EMPLOYEE;
++-----------------+
+| LCASE(emp_name) |
++-----------------+
+| abc1            |
+| abc2            |
+| abc3            |
+| abc4            |
+| abc5            |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> AGGRETE_FUNCTION.sql;                
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AGGRETE_FUNCTION.sql' at line 1
+mysql> 7_AGGRETE_FUNCTION.sql
+    -> 7_AGGRETE_FUNCTION.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '7_AGGRETE_FUNCTION.sql
+7_AGGRETE_FUNCTION.sql' at line 1
+mysql> SELECT MID(emp_name, 2, 3) FROM EMPLOYEE;
++---------------------+
+| MID(emp_name, 2, 3) |
++---------------------+
+| bc1                 |
+| bc2                 |
+| bc3                 |
+| bc4                 |
+| bc5                 |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT MAX(salary) FROM TE;
++-------------+
+| MAX(salary) |
++-------------+
+|        1000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> source 7_AGGRETE_FUNCTION.sql;    
++-------------+
+| MAX(salary) |
++-------------+
+|         500 |
++-------------+
+1 row in set (0.00 sec)
+
++-------------+
+| MIN(salary) |
++-------------+
+|         100 |
++-------------+
+1 row in set (0.00 sec)
+
++-------------+
+| SUM(salary) |
++-------------+
+|        1500 |
++-------------+
+1 row in set (0.00 sec)
+
++-------------+
+| AVG(salary) |
++-------------+
+|    300.0000 |
++-------------+
+1 row in set (0.00 sec)
+
++---------------+
+| COUNT(salary) |
++---------------+
+|             5 |
++---------------+
+1 row in set (0.00 sec)
+
++-----------------+
+| LCASE(emp_name) |
++-----------------+
+| abc1            |
+| abc2            |
+| abc3            |
+| abc4            |
+| abc5            |
++-----------------+
+5 rows in set (0.00 sec)
+
++-----------------+
+| UCASE(emp_name) |
++-----------------+
+| ABC1            |
+| ABC2            |
+| ABC3            |
+| ABC4            |
+| ABC5            |
++-----------------+
+5 rows in set (0.00 sec)
+
++---------------------+
+| MID(emp_name, 2, 3) |
++---------------------+
+| bc1                 |
+| bc2                 |
+| bc3                 |
+| bc4                 |
+| bc5                 |
++---------------------+
+5 rows in set (0.00 sec)
+
++-------------+
+| MAX(salary) |
++-------------+
+|        1000 |
++-------------+
+1 row in set (0.00 sec)
+
++-------------+
+| MIN(salary) |
++-------------+
+|         300 |
++-------------+
+1 row in set (0.00 sec)
+
++-------------+
+| SUM(salary) |
++-------------+
+|        3100 |
++-------------+
+1 row in set (0.00 sec)
+
++-------------+
+| AVG(salary) |
++-------------+
+|    620.0000 |
++-------------+
+1 row in set (0.00 sec)
+
++---------------+
+| COUNT(salary) |
++---------------+
+|             5 |
++---------------+
+1 row in set (0.00 sec)
+
++-----------------+
+| LCASE(emp_name) |
++-----------------+
+| abc3            |
+| abc4            |
+| abc5            |
+| abc9            |
+| abc10           |
++-----------------+
+5 rows in set (0.00 sec)
+
++-----------------+
+| UCASE(emp_name) |
++-----------------+
+| ABC3            |
+| ABC4            |
+| ABC5            |
+| ABC9            |
+| ABC10           |
++-----------------+
+5 rows in set (0.00 sec)
+
++---------------------+
+| MID(emp_name, 2, 3) |
++---------------------+
+| bc3                 |
+| bc4                 |
+| bc5                 |
+| bc9                 |
+| bc1                 |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql>   

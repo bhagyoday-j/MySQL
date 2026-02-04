@@ -1,0 +1,11 @@
+mysql> select * from dept order by dname;
++------+-----------+--------+
+| dno  | dname     | mgreno |
++------+-----------+--------+
+|    2 | Finance   |      2 |
+|    1 | HR        |      1 |
+|    3 | IT        |      3 |
+|    5 | Marketing |      5 |
+|    4 | Sales     |      4 |
++------+-----------+--------+
+5 rows in set (0.02 sec)

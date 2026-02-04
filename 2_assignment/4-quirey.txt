@@ -1,0 +1,26 @@
+mysql> select * form emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form emp' at line 1
+mysql> select * from emp;
++------+-------+------------+-------+--------+------+
+| eno  | ename | bdate      | title | salary | dno  |
++------+-------+------------+-------+--------+------+
+|    1 | abc   | 2026-01-01 | pqr   |  20000 | D1   |
+|    2 | def   | 2025-02-02 | xyz   |  30000 | D2   |
+|    3 | ghi   | 2024-03-03 | lmn   |  40000 | D1   |
+|    4 | jkl   | 2023-04-04 | opq   |  50000 | D3   |
+|    5 | mno   | 2022-05-05 | rst   |  60000 | D2   |
++------+-------+------------+-------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select ename from emp where dno = 'D1' order by salay desc;
+ERROR 1054 (42S22): Unknown column 'salay' in 'order clause'
+mysql> select ename from emp where dno = 'D1' order by salary desc;
++-------+
+| ename |
++-------+
+| ghi   |
+| abc   |
++-------+
+2 rows in set (0.00 sec)
+
+mysql>

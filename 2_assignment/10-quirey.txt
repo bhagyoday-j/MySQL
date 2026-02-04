@@ -1,0 +1,4 @@
+mysql> select * form emp where salary like '8__3%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form emp where salary like '8__3%'' at line 1
+mysql> select * from emp where salary like '8__3%';
+Empty set (0.00 sec)

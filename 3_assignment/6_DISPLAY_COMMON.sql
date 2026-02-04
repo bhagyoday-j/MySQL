@@ -1,0 +1,7 @@
+SELECT DISTINCT emp_no FROM EMPLOYEE 
+WHERE emp_no 
+IN (SELECT emp_no FROM TE);
+
+SELECT DISTINCT emp_name FROM EMPLOYEE 
+WHERE emp_name 
+IN (SELECT emp_name FROM TE);

@@ -1,0 +1,314 @@
+Enter password: **************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES
+    ->
+    -> SHOW DB
+    -> ^C
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| bhagyoday118       |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.24 sec)
+
+mysql> CREATE DATABASE sales;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> USE sales;
+Database changed
+mysql> source CEATE_TABLES.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VARCHAR2(6),
+    NAME       VARCHAR2(20),
+    ADDRESS1   VARCHAR2(30),
+    ADDRE' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VARCHAR2(6),
+    DESCRIPTION    VARCHAR2(15),
+    PROFITPERCENT  NUMBER(4,2),
+  ' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VARCHAR2(6),
+    SALESMANNAME  VARCHAR2(20),
+    ADDRESS1      VARCHAR2(30),
+   ' at line 2
+mysql> source CEATE_TABLES.sql;
+Query OK, 0 rows affected (0.19 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> source CEATE_INSERT_RECORDS.sql;
+ERROR: 
+Failed to open file 'CEATE_INSERT_RECORDS.sql', error: 2
+mysql> source INESERT_RECORDS.sql;
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> source RETREIVING_RECORDS.sql;
++----------------+
+| NAME           |
++----------------+
+| Ivan Bayross   |
+| Mamta Muzumdar |
+| Chhaya Bankar  |
+| Ashwini Joshi  |
+| Hansel Colaco  |
+| Deepak Sharma  |
++----------------+
+6 rows in set (0.00 sec)
+
++----------+----------------+----------+----------+-----------+---------+-------------+----------+
+| CLIENTNO | NAME           | ADDRESS1 | ADDRESS2 | CITY      | PINCODE | STATE       | BALDUE   |
++----------+----------------+----------+----------+-----------+---------+-------------+----------+
+| C00001   | Ivan Bayross   | NULL     | NULL     | Mumbai    |  400054 | Maharashtra | 15000.00 |
+| C00002   | Mamta Muzumdar | NULL     | NULL     | Madras    |  780001 | Tamil Nadu  |     0.00 |
+| C00003   | Chhaya Bankar  | NULL     | NULL     | Mumbai    |  400057 | Maharashtra |  5000.00 |
+| C00004   | Ashwini Joshi  | NULL     | NULL     | Bangalore |  560001 | Karnataka   |     0.00 |
+| C00005   | Hansel Colaco  | NULL     | NULL     | Mumbai    |  400060 | Maharashtra |  2000.00 |
+| C00006   | Deepak Sharma  | NULL     | NULL     | Mangalore |  560050 | Karnataka   |     0.00 |
++----------+----------------+----------+----------+-----------+---------+-------------+----------+
+6 rows in set (0.00 sec)
+
++----------------+-----------+-------------+
+| NAME           | CITY      | STATE       |
++----------------+-----------+-------------+
+| Ivan Bayross   | Mumbai    | Maharashtra |
+| Mamta Muzumdar | Madras    | Tamil Nadu  |
+| Chhaya Bankar  | Mumbai    | Maharashtra |
+| Ashwini Joshi  | Bangalore | Karnataka   |
+| Hansel Colaco  | Mumbai    | Maharashtra |
+| Deepak Sharma  | Mangalore | Karnataka   |
++----------------+-----------+-------------+
+6 rows in set (0.00 sec)
+
++--------------+
+| DESCRIPTION  |
++--------------+
+| T-Shirts     |
+| Shirts       |
+| Cotton Jeans |
+| Jeans        |
+| Trousers     |
+| Pull Overs   |
+| Denim Shirts |
+| Lycra Tops   |
+| Skirts       |
++--------------+
+9 rows in set (0.00 sec)
+9 rows in set (0.00 sec)
+
++----------+---------------+----------+----------+--------+---------+-------------+----------+
+| CLIENTNO | NAME          | ADDRESS1 | ADDRESS2 | CITY   | PINCODE | STATE       | BALDUE   |
++----------+---------------+----------+----------+--------+---------+-------------+----------+
+| C00001   | Ivan Bayross  | NULL     | NULL     | Mumbai |  400054 | Maharashtra | 15000.00 |
+| C00003   | Chhaya Bankar | NULL     | NULL     | Mumbai |  400057 | Maharashtra |  5000.00 |
+| C00005   | Hansel Colaco | NULL     | NULL     | Mumbai |  400060 | Maharashtra |  2000.00 |
++----------+---------------+----------+----------+--------+---------+-------------+----------+
+3 rows in set (0.03 sec)
+
++--------------+
+| SALESMANNAME |
++--------------+
+| Aman         |
+| Omkar        |
+| Raj          |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> source UPDATING_RECORDS.sql;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
++----------+----------------+----------+----------+-----------+---------+-------------+----------+
+| CLIENTNO | NAME           | ADDRESS1 | ADDRESS2 | CITY      | PINCODE | STATE       | BALDUE   |
++----------+----------------+----------+----------+-----------+---------+-------------+----------+
+| C00001   | Ivan Bayross   | NULL     | NULL     | Mumbai    |  400054 | Maharashtra | 15000.00 |
+| C00002   | Mamta Muzumdar | NULL     | NULL     | Madras    |  780001 | Tamil Nadu  |     0.00 |
+| C00003   | Chhaya Bankar  | NULL     | NULL     | Mumbai    |  400057 | Maharashtra |  5000.00 |
+| C00004   | Ashwini Joshi  | NULL     | NULL     | Bangalore |  560001 | Karnataka   |     0.00 |
+| C00005   | Hansel Colaco  | NULL     | NULL     | Bangalore |  400060 | Maharashtra |  2000.00 |
+| C00006   | Deepak Sharma  | NULL     | NULL     | Mangalore |  560050 | Karnataka   |     0.00 |
++----------+----------------+----------+----------+-----------+---------+-------------+----------+
+6 rows in set (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
++----------+----------------+----------+----------+-----------+---------+-------------+---------+
+| CLIENTNO | NAME           | ADDRESS1 | ADDRESS2 | CITY      | PINCODE | STATE       | BALDUE  |
++----------+----------------+----------+----------+-----------+---------+-------------+---------+
+| C00001   | Ivan Bayross   | NULL     | NULL     | Mumbai    |  400054 | Maharashtra | 1000.00 |
+| C00002   | Mamta Muzumdar | NULL     | NULL     | Madras    |  780001 | Tamil Nadu  |    0.00 |
+| C00003   | Chhaya Bankar  | NULL     | NULL     | Mumbai    |  400057 | Maharashtra | 5000.00 |
+| C00004   | Ashwini Joshi  | NULL     | NULL     | Bangalore |  560001 | Karnataka   |    0.00 |
+| C00005   | Hansel Colaco  | NULL     | NULL     | Bangalore |  400060 | Maharashtra | 2000.00 |
+| C00006   | Deepak Sharma  | NULL     | NULL     | Mangalore |  560050 | Karnataka   |    0.00 |
++----------+----------------+----------+----------+-----------+---------+-------------+---------+
+6 rows in set (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
++-----------+--------------+---------------+-------------+-----------+------------+-----------+-----------+
+| PRODUCTNO | DESCRIPTION  | PROFITPERCENT | UNITMEASURE | QTYONHAND | REORDERLVL | SELLPRICE | COSTPRICE |
++-----------+--------------+---------------+-------------+-----------+------------+-----------+-----------+
+| P00001    | T-Shirts     |          5.00 | Piece       |       200 |         50 |    350.00 |    250.00 |
+| P0345     | Shirts       |          6.00 | Piece       |       150 |         50 |    500.00 |    350.00 |
+| P06734    | Cotton Jeans |          5.00 | Piece       |       100 |         20 |    600.00 |    450.00 |
+| P07865    | Jeans        |          5.00 | Piece       |       100 |         20 |    750.00 |    500.00 |
+| P07868    | Trousers     |          2.00 | Piece       |       150 |         50 |    850.00 |    950.00 |
+| P07885    | Pull Overs   |          2.50 | Piece       |        80 |         30 |    700.00 |    450.00 |
+| P07965    | Denim Shirts |          4.00 | Piece       |       100 |         40 |    350.00 |    250.00 |
+| P07975    | Lycra Tops   |          5.00 | Piece       |        70 |         30 |    300.00 |    175.00 |
+| P08865    | Skirts       |          5.00 | Piece       |        75 |         30 |    450.00 |    300.00 |
++-----------+--------------+---------------+-------------+-----------+------------+-----------+-----------+
+9 rows in set (0.00 sec)
+
+Query OK, 4 rows affected (0.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
++------------+--------------+----------+----------+------+---------+-------------+---------+----------+----------+---------+
+| SALESMANNO | SALESMANNAME | ADDRESS1 | ADDRESS2 | CITY | PINCODE | STATE       | SALAMT  | TGTTOGET | YTDSALES | REMARKS |
++------------+--------------+----------+----------+------+---------+-------------+---------+----------+----------+---------+
+| S00001     | Aman         | A/14     | Worli    | Pune |  400002 | Maharashtra | 3000.00 |   100.00 |    50.00 | Good    |
+| S00002     | Omkar        | 65       | Nariman  | Pune |  400003 | Maharashtra | 3000.00 |   200.00 |   100.00 | Good    |
+| S00003     | Raj          | P-7      | Bandra   | Pune |  400001 | Maharashtra | 3000.00 |   200.00 |   100.00 | Good    |
+| S00004     | Ashish       | A/5      | Juhu     | Pune |  400044 | Maharashtra | 3500.00 |   200.00 |   150.00 | Good    |
++------------+--------------+----------+----------+------+---------+-------------+---------+----------+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> source DELETING_RECORDS.sql;
+Query OK, 1 row affected (0.03 sec)
+
++------------+--------------+----------+----------+------+---------+-------------+---------+----------+----------+---------+
+| SALESMANNO | SALESMANNAME | ADDRESS1 | ADDRESS2 | CITY | PINCODE | STATE       | SALAMT  | TGTTOGET | YTDSALES | REMARKS |
++------------+--------------+----------+----------+------+---------+-------------+---------+----------+----------+---------+
+| S00001     | Aman         | A/14     | Worli    | Pune |  400002 | Maharashtra | 3000.00 |   100.00 |    50.00 | Good    |
+| S00002     | Omkar        | 65       | Nariman  | Pune |  400003 | Maharashtra | 3000.00 |   200.00 |   100.00 | Good    |
+| S00003     | Raj          | P-7      | Bandra   | Pune |  400001 | Maharashtra | 3000.00 |   200.00 |   100.00 | Good    |
++------------+--------------+----------+----------+------+---------+-------------+---------+----------+----------+---------+
+3 rows in set (0.00 sec)
+
+Query OK, 3 rows affected (0.00 sec)
+
++-----------+-------------+---------------+-------------+-----------+------------+-----------+-----------+
+| PRODUCTNO | DESCRIPTION | PROFITPERCENT | UNITMEASURE | QTYONHAND | REORDERLVL | SELLPRICE | COSTPRICE |
++-----------+-------------+---------------+-------------+-----------+------------+-----------+-----------+
+| P00001    | T-Shirts    |          5.00 | Piece       |       200 |         50 |    350.00 |    250.00 |
+| P0345     | Shirts      |          6.00 | Piece       |       150 |         50 |    500.00 |    350.00 |
+| P07868    | Trousers    |          2.00 | Piece       |       150 |         50 |    850.00 |    950.00 |
+| P07885    | Pull Overs  |          2.50 | Piece       |        80 |         30 |    700.00 |    450.00 |
+| P07975    | Lycra Tops  |          5.00 | Piece       |        70 |         30 |    300.00 |    175.00 |
+| P08865    | Skirts      |          5.00 | Piece       |        75 |         30 |    450.00 |    300.00 |
++-----------+-------------+---------------+-------------+-----------+------------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
++----------+---------------+----------+----------+-----------+---------+-------------+---------+
+| CLIENTNO | NAME          | ADDRESS1 | ADDRESS2 | CITY      | PINCODE | STATE       | BALDUE  |
++----------+---------------+----------+----------+-----------+---------+-------------+---------+
+| C00001   | Ivan Bayross  | NULL     | NULL     | Mumbai    |  400054 | Maharashtra | 1000.00 |
+| C00003   | Chhaya Bankar | NULL     | NULL     | Mumbai    |  400057 | Maharashtra | 5000.00 |
+| C00004   | Ashwini Joshi | NULL     | NULL     | Bangalore |  560001 | Karnataka   |    0.00 |
+| C00005   | Hansel Colaco | NULL     | NULL     | Bangalore |  400060 | Maharashtra | 2000.00 |
+| C00006   | Deepak Sharma | NULL     | NULL     | Mangalore |  560050 | Karnataka   |    0.00 |
++----------+---------------+----------+----------+-----------+---------+-------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> source ALTERING_TABLE_STUCTURE.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMBER(10)' at line 2
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| CLIENTNO | varchar(6)    | YES  |     | NULL    |       |
+| NAME     | varchar(20)   | YES  |     | NULL    |       |
+| ADDRESS1 | varchar(30)   | YES  |     | NULL    |       |
+| ADDRESS2 | varchar(30)   | YES  |     | NULL    |       |
+| CITY     | varchar(15)   | YES  |     | NULL    |       |
+| PINCODE  | int           | YES  |     | NULL    |       |
+| STATE    | varchar(15)   | YES  |     | NULL    |       |
+| BALDUE   | decimal(10,2) | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+8 rows in set (0.03 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMBER(10,2)' at line 2
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| PRODUCTNO     | varchar(6)    | YES  |     | NULL    |       |
+| DESCRIPTION   | varchar(15)   | YES  |     | NULL    |       |
+| PROFITPERCENT | decimal(4,2)  | YES  |     | NULL    |       |
+| UNITMEASURE   | varchar(10)   | YES  |     | NULL    |       |
+| QTYONHAND     | int           | YES  |     | NULL    |       |
+| REORDERLVL    | int           | YES  |     | NULL    |       |
+| SELLPRICE     | decimal(10,2) | YES  |     | NULL    |       |
+| COSTPRICE     | decimal(10,2) | YES  |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> source DROP_TABLE.sql;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> source RENAME_TABLE.sql;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SALESMAN_MASTER TO SMAN_MAST' at line 1
++-----------------+
+| Tables_in_sales |
++-----------------+
+| product_master  |
+| salesman_master |
++-----------------+
+2 rows in set (0.03 sec)
+
+mysql>

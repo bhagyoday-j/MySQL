@@ -1,0 +1,45 @@
+ysql> select * from emp;
++------+-------+------------+-------+--------+------+
+| eno  | ename | bdate      | title | salary | dno  |
++------+-------+------------+-------+--------+------+
+|    1 | abc   | 2026-01-01 | pqr   |  20000 | D1   |
+|    2 | def   | 2025-02-02 | xyz   |  30000 | D2   |
+|    3 | ghi   | 2024-03-03 | lmn   |  40000 | D1   |
+|    4 | jkl   | 2023-04-04 | opq   |  50000 | D3   |
+|    5 | mno   | 2022-05-05 | rst   |  60000 | D2   |
++------+-------+------------+-------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select eno, ename from emp where (title = 'pqr' or 'title = 'xyz') and (salary > 35000);
+    '>
+    '>
+    '> ;
+    '>
+    '> fl
+    '> eie
+    '> select eno, ename from emp where (title = 'pqr' or 'title = 'xyz') and (salary > 35000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'xyz') and (salary > 35000);
+
+
+;
+
+fl
+eie
+select eno, ename from emp where (title ' at line 1
+mysql> select eno, ename from emp where (title = 'pqr' or 'title = 'xyz') and (salary > 35000);
+    '> select eno, ename from emp where (title = 'pqr' or 'title = 'xyz') and (salary > 35000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'xyz') and (salary > 35000);
+select eno, ename from emp where (title = 'pqr' or '' at line 1
+mysql> select eno, ename from emp where (title = 'pqr' or title = 'xyz') and (salary > 35000); 
+Empty set (0.00 sec)
+
+mysql> select eno, ename from emp where (title = 'pqr' or title = 'xyz') and (salary > 3500);  
++------+-------+
+| eno  | ename |
++------+-------+
+|    1 | abc   |
+|    2 | def   |
++------+-------+
+2 rows in set (0.00 sec)
+
+mysql>

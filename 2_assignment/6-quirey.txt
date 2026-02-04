@@ -1,0 +1,11 @@
+mysql> select eno, ename, title, salary form emp where ename like 'A%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp where ename like 'A%'' at line 1
+mysql> select eno, ename, title, salary from emp where ename like 'A%';
++------+-------+-------+--------+
+| eno  | ename | title | salary |
++------+-------+-------+--------+
+|    1 | abc   | pqr   |  20000 |
++------+-------+-------+--------+
+1 row in set (0.03 sec)
+
+mysql>

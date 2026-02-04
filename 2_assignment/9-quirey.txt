@@ -1,0 +1,4 @@
+mysql> select * from dept where dname like '________';
+Empty set (0.00 sec)
+
+mysql>
