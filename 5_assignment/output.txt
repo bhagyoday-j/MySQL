@@ -1,0 +1,252 @@
+mysql> create database assignment5;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> use assignment5;
+Database changed
+mysql> create table library(
+    ->     RollNo int,
+    ->     Name varchar(20),
+    ->     dateOfissue date,
+    ->     nameOfBook varchar(20),
+    ->     status varchar(2)
+    -> );
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> create table fine(
+    ->     RollNo int,
+    ->     dateOfReturn date,
+    ->     fineAmount int
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into library values (1, 'a', '2024-05-01', 'Book A', 'I');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into library values (2, 'b', '2024-05-10', 'Book B', 'I');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into library values (3, 'c', '2024-05-20', 'Book C', 'I');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into library values (4, 'd', '2024-05-25', 'Book D', 'I');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into library values (5, 'e', '2024-05-30', 'Book E', 'I');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> delimiter//
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//' at line 1
+mysql> delimiter //
+mysql> create procedure calfine(rno int, n_book varchar(10))
+    -> begin
+    -> declare noOfDays int;
+    ->     declare fineamt int default 0;
+    -> declare date1 date;
+    -> select dateOfissue into date1 from library
+    -> where RollNo = rno and nameOfBook = n_book;
+    -> set noOfDays = datediff(curdate(), date1);
+    -> if noOfDays > 15 and noOfDays <= 30 then
+    -> set fineamt = (noOfDays - 15) * 5;
+    -> end if;
+    -> if noOfDays > 30 then
+    -> set fineamt = (noOfDays - 30) * 50 + (15 * 5);
+    -> end if;
+    -> select concat('Fine Amount: ', fineamt) as FineAmount;
+    -> if fineamt > 0 then
+    -> insert into fine (RollNo, dateOfReturn, fineAmount) values (rno, curdate(), fineamt);
+    -> update library set status = 'R' where RollNo = rno and nameOfBook = n_book;
+    -> end if;
+    -> end //
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> delimiter;
+    -> delimiter ;
+    -> ;
+    -> ;
+    -> end;
+    -> ^C
+mysql> delimiter ;
+mysql> call calfine('1', 'Book A');
++--------------------+
+| FineAmount         |
++--------------------+
+| Fine Amount: 32525 |
++--------------------+
+1 row in set (0.04 sec)
+
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from fine;
++--------+--------------+------------+
+| RollNo | dateOfReturn | fineAmount |
++--------+--------------+------------+
+|      1 | 2026-03-11   |      32525 |
++--------+--------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * form library;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form library' at line 1
+mysql> select * from library;
++--------+------+-------------+------------+--------+
+| RollNo | Name | dateOfissue | nameOfBook | status |
++--------+------+-------------+------------+--------+
+|      1 | a    | 2024-05-01  | Book A     | R      |
+|      2 | b    | 2024-05-10  | Book B     | I      |
+|      3 | c    | 2024-05-20  | Book C     | I      |
+|      4 | d    | 2024-05-25  | Book D     | I      |
+|      5 | e    | 2024-05-30  | Book E     | I      |
++--------+------+-------------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into library values (6, 'f', '2026-03-01', 'Book F', 'I');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into library values (7, 'g', '2026-02-25', 'Book G', 'I');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> call calfine('6', 'Book F');
++----------------+
+| FineAmount     |
++----------------+
+| Fine Amount: 0 |
++----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call calfine('7', 'Book G');
++----------------+
+| FineAmount     |
++----------------+
+| Fine Amount: 0 |
++----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from fineamount;
+ERROR 1146 (42S02): Table 'assignment5.fineamount' doesn't exist
+mysql> select * from fine;
++--------+--------------+------------+
+| RollNo | dateOfReturn | fineAmount |
++--------+--------------+------------+
+|      1 | 2026-03-11   |      32525 |
++--------+--------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from library;
++--------+------+-------------+------------+--------+
+| RollNo | Name | dateOfissue | nameOfBook | status |
++--------+------+-------------+------------+--------+
+|      1 | a    | 2024-05-01  | Book A     | R      |
+|      2 | b    | 2024-05-10  | Book B     | I      |
+|      3 | c    | 2024-05-20  | Book C     | I      |
+|      4 | d    | 2024-05-25  | Book D     | I      |
+|      5 | e    | 2024-05-30  | Book E     | I      |
+|      6 | f    | 2026-03-01  | Book F     | I      |
+|      7 | g    | 2026-02-25  | Book G     | I      |
++--------+------+-------------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> call calfine('7', 'Book G');
++----------------+
+| FineAmount     |
++----------------+
+| Fine Amount: 0 |
++----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from library;
++--------+------+-------------+------------+--------+
+| RollNo | Name | dateOfissue | nameOfBook | status |
++--------+------+-------------+------------+--------+
+|      1 | a    | 2024-05-01  | Book A     | R      |
+|      2 | b    | 2024-05-10  | Book B     | I      |
+|      3 | c    | 2024-05-20  | Book C     | I      |
+|      4 | d    | 2024-05-25  | Book D     | I      |
+|      5 | e    | 2024-05-30  | Book E     | I      |
+|      6 | f    | 2026-03-01  | Book F     | I      |
+|      7 | g    | 2026-02-25  | Book G     | I      |
++--------+------+-------------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> call calfine('6', 'Book F');
++----------------+
+| FineAmount     |
++----------------+
+| Fine Amount: 0 |
++----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from library;
++--------+------+-------------+------------+--------+
+| RollNo | Name | dateOfissue | nameOfBook | status |
++--------+------+-------------+------------+--------+
+|      1 | a    | 2024-05-01  | Book A     | R      |
+|      2 | b    | 2024-05-10  | Book B     | I      |
+|      3 | c    | 2024-05-20  | Book C     | I      |
+|      4 | d    | 2024-05-25  | Book D     | I      |
+|      5 | e    | 2024-05-30  | Book E     | I      |
+|      6 | f    | 2026-03-01  | Book F     | I      |
+|      7 | g    | 2026-02-25  | Book G     | I      |
++--------+------+-------------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> call calfine('7', 'Book G');
++----------------+
+| FineAmount     |
++----------------+
+| Fine Amount: 0 |
++----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from library;
++--------+------+-------------+------------+--------+
+| RollNo | Name | dateOfissue | nameOfBook | status |
++--------+------+-------------+------------+--------+
+|      1 | a    | 2024-05-01  | Book A     | R      |
+|      2 | b    | 2024-05-10  | Book B     | I      |
+|      3 | c    | 2024-05-20  | Book C     | I      |
+|      4 | d    | 2024-05-25  | Book D     | I      |
+|      5 | e    | 2024-05-30  | Book E     | I      |
+|      6 | f    | 2026-03-01  | Book F     | I      |
+|      7 | g    | 2026-02-25  | Book G     | I      |
++--------+------+-------------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> insert into library values (8, 'h', '2026-02-01', 'Book H', 'I');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> call calfine('8', 'Book H');
++------------------+
+| FineAmount       |
++------------------+
+| Fine Amount: 475 |
++------------------+
+1 row in set (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from library;
++--------+------+-------------+------------+--------+
+| RollNo | Name | dateOfissue | nameOfBook | status |
++--------+------+-------------+------------+--------+
+|      1 | a    | 2024-05-01  | Book A     | R      |
+|      2 | b    | 2024-05-10  | Book B     | I      |
+|      3 | c    | 2024-05-20  | Book C     | I      |
+|      4 | d    | 2024-05-25  | Book D     | I      |
+|      5 | e    | 2024-05-30  | Book E     | I      |
+|      6 | f    | 2026-03-01  | Book F     | I      |
+|      7 | g    | 2026-02-25  | Book G     | I      |
+|      8 | h    | 2026-02-01  | Book H     | R      |
++--------+------+-------------+------------+--------+
+8 rows in set (0.00 sec)
+
+mysql>

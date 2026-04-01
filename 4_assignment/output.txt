@@ -1,0 +1,514 @@
+PS D:\CODING\SQL> mysql -u root -p
+Enter password: **************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> source 1_CREATE.sql;
+ERROR: 
+Failed to open file '1_CREATE.sql', error: 2
+mysql> exit
+Bye
+PS D:\CODING\SQL> cd d:\CODING\SQL\4_assignment
+PS D:\CODING\SQL\4_assignment> mysql -u root -p
+Enter password: **************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> source 1_CREATE.sql;
+Query OK, 1 row affected (0.08 sec)
+
+Database changed
+Query OK, 0 rows affected (0.20 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> source 3_INSERT_VALUES.sql
+Query OK, 1 row affected (0.06 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from students;
++--------+---------+--------------+------------+------+
+| RollNo | Name    | Address      | Phone      | Age  |
++--------+---------+--------------+------------+------+
+|      1 | Alice   | 123 Main St  | 1234567890 |   20 |
+|      2 | Bob     | 456 Oak Ave  | 0987654321 |   22 |
+|      3 | Charlie | 789 Pine Rd  | 5555555555 |   21 |
+|      4 | David   | 321 Maple St | 1111111111 |   23 |
+|      5 | Eve     | 654 Cedar St | 2222222222 |   24 |
++--------+---------+--------------+------------+------+
+5 rows in set (0.03 sec)
+
+mysql> select * from student_course;
++----------+--------+
+| CourseID | RollNo |
++----------+--------+
+|        1 |      1 |
+|        2 |      2 |
+|        5 |      3 |
+|        6 |      4 |
++----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> source 2_INNER_JOIN.sql;
+ERROR 1146 (42S02): Table 'assignment4.students_course' doesn't exist
+mysql> source 2_INNER_JOIN.sql;
+ERROR 1146 (42S02): Table 'assignment4.students_course' doesn't exist
+mysql> SELECT Students_Course.CourseID, Students.Name
+    -> FROM Students INNER JOIN Students_Course ON Students.RollNo = Students_Course.RollNo;
+ERROR 1146 (42S02): Table 'assignment4.students_course' doesn't exist
+mysql> source 2_INNER_JOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+|        5 | Charlie |
+|        6 | David   |
++----------+---------+
+4 rows in set (0.03 sec)
+
+mysql> source 4_LEFTFOIN.sql;
+ERROR: 
+Failed to open file '4_LEFTFOIN.sql', error: 2
+mysql> source 4_LEFTJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+4 rows in set (0.03 sec)
+
+mysql> source 4_LEFTFOIN.sql;
+ERROR:
+Failed to open file '4_LEFTFOIN.sql', error: 2
+mysql> source 4_LEFTJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+mysql> source 4_LEFTFOIN.sql;
+ERROR:
+Failed to open file '4_LEFTFOIN.sql', error: 2
+mysql> source 4_LEFTJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+ERROR:
+Failed to open file '4_LEFTFOIN.sql', error: 2
+mysql> source 4_LEFTJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+|        5 | Charlie |
+|        6 | David   |
+|     NULL | Eve     |
+|     NULL | Eve     |
++----------+---------+
+5 rows in set (0.03 sec)
+
+mysql> source 5_RIGHTJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+|        5 | Charlie |
+|        6 | David   |
++----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> source 6_FULLJOIN.sql; 
+ERROR 1054 (42S22): Unknown column 'Students.Name' in 'field list'
+mysql> source 6_FULLJOIN.sql;
+ERROR 1054 (42S22): Unknown column 'Students.Name' in 'field list'
+mysql> source 6_FULLJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+|        5 | Charlie |
+|        6 | David   |
++----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> source 6_FULLJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+|        5 | Charlie |
+|        6 | David   |
+|     NULL | Eve     |
++----------+---------+
+5 rows in set (0.03 sec)
+
+mysql> DELETE TABALE students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'students' at line 1
+mysql> DELETE TAbLE students; 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TAbLE students' at line 1
+mysql> delete table students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table students' at line 1
+mysql> delete students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> delete from students;
+Query OK, 5 rows affected (0.03 sec)
+
+mysql> delete from student_course;
+Query OK, 4 rows affected (0.03 sec)
+
+mysql> source 3_INSERT_VALUES.sql;
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from students;
++--------+---------+---------------+------------+------+
+| RollNo | Name    | Address       | Phone      | Age  |
++--------+---------+---------------+------------+------+
+|      1 | Alice   | 123 Main St   | 1234567890 |   20 |
+|      2 | Bob     | 456 Oak Ave   | 0987654321 |   22 |
+|      3 | Charlie | 789 Pine Rd   | 5555555555 |   21 |
+|      4 | David   | 321 Maple St  | 1111111111 |   23 |
+|      5 | Eve     | 654 Cedar St  | 2222222222 |   24 |
+|      6 | Frank   | 987 Birch St  | 3333333333 |   20 |
+|      7 | Grace   | 246 Elm St    | 4444444444 |   22 |
+|      8 | Heidi   | 135 Spruce St | 5555555555 |   21 |
++--------+---------+---------------+------------+------+
+8 rows in set (0.00 sec)
+
+mysql> select * from student_course;
++----------+--------+
+| CourseID | RollNo |
++----------+--------+
+|        1 |      1 |
+|        2 |      2 |
+|        2 |      3 |
+|        3 |      4 |
+|        1 |      5 |
+|        4 |      9 |
+|        2 |     10 |
+|        3 |     11 |
++----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> source 6_FULLJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+mysql> source 6_FULLJOIN.sql;
++----------+---------+
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
+| CourseID | Name    |
++----------+---------+
+|        1 | Alice   |
++----------+---------+
+|        1 | Alice   |
+|        2 | Bob     |
+|        2 | Charlie |
+|        3 | David   |
+|        1 | Eve     |
+|        4 | NULL    |
+|        2 | NULL    |
+|        3 | NULL    |
+|     NULL | Frank   |
+|     NULL | Grace   |
+|     NULL | Heidi   |
++----------+---------+
+11 rows in set (0.00 sec)
+
+mysql> source 7_VIEW.sql;
+ERROR 1007 (HY000): Can't create database 'assignment4'; database exists
+Database changed
+ERROR 1050 (42S01): Table 'students' already exists
+ERROR 1050 (42S01): Table 'student_course' already exists
+Query OK, 0 rows affected (0.02 sec)
+
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
++---------+------+----------+
+| name    | age  | CourseID |
++---------+------+----------+
+| Alice   |   20 |        1 |
+| Bob     |   22 |        2 |
+| Charlie |   21 |        2 |
+| David   |   23 |        3 |
+| Eve     |   24 |        1 |
++---------+------+----------+
+5 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source 7_VIEW.sql;
+Query OK, 0 rows affected (0.01 sec)
+
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
++---------+------+----------+
+| name    | age  | CourseID |
++---------+------+----------+
+| Alice   |   20 |        1 |
+| Bob     |   22 |        2 |
+| Charlie |   21 |        2 |
+| David   |   23 |        3 |
+| Eve     |   24 |        1 |
++---------+------+----------+
+5 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from students;
++--------+---------+---------------+------------+------+
+| RollNo | Name    | Address       | Phone      | Age  |
++--------+---------+---------------+------------+------+
+|      1 | Alice   | 123 Main St   | 1234567890 |   20 |
+|      2 | Bob     | 456 Oak Ave   | 0987654321 |   22 |
+|      3 | Charlie | 789 Pine Rd   | 5555555555 |   21 |
+|      4 | David   | 321 Maple St  | 1111111111 |   23 |
+|      5 | Eve     | 654 Cedar St  | 2222222222 |   24 |
+|      6 | Frank   | 987 Birch St  | 3333333333 |   20 |
+|      7 | Grace   | 246 Elm St    | 4444444444 |   22 |
+|      8 | Heidi   | 135 Spruce St | 5555555555 |   21 |
++--------+---------+---------------+------------+------+
+8 rows in set (0.00 sec)
+
+mysql> select * form student_course;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form student_course' at line 1
+mysql> select * from student_course;
++----------+--------+
+| CourseID | RollNo |
++----------+--------+
+|        1 |      1 |
+|        2 |      2 |
+|        2 |      3 |
+|        3 |      4 |
+|        1 |      5 |
+|        4 |      9 |
+|        2 |     10 |
+|        3 |     11 |
++----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> source 7_VIEW.sql;           
+Query OK, 0 rows affected (0.01 sec)
+
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
++---------+------+----------+
+| name    | age  | CourseID |
++---------+------+----------+
+| Alice   |   20 |        1 |
+| Bob     |   22 |        2 |
+| Charlie |   21 |        2 |
+| David   |   23 |        3 |
+| Eve     |   24 |        1 |
++---------+------+----------+
+5 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE VIEW V1 AS
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> CREATE VIEW V1 AS
+    -> SELECT RollNo, Name, Address, Age
+    -> FROM Students
+    -> WHERE Age < 20;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM V1;
+Empty set (0.00 sec)
+
+mysql> DROP VIEW V1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source 7_VIEW.sql;
+Query OK, 0 rows affected (0.01 sec)
+
++--------+---------+---------------+------+
+| RollNo | Name    | Address       | Age  |
++--------+---------+---------------+------+
+|      2 | Bob     | 456 Oak Ave   |   22 |
+|      3 | Charlie | 789 Pine Rd   |   21 |
+|      4 | David   | 321 Maple St  |   23 |
+|      5 | Eve     | 654 Cedar St  |   24 |
+|      7 | Grace   | 246 Elm St    |   22 |
+|      8 | Heidi   | 135 Spruce St |   21 |
++--------+---------+---------------+------+
+6 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
++---------+------+----------+
+| name    | age  | CourseID |
++---------+------+----------+
+| Alice   |   20 |        1 |
++---------+------+----------+
+| name    | age  | CourseID |
++---------+------+----------+
++---------+------+----------+
+| name    | age  | CourseID |
++---------+------+----------+
++---------+------+----------+
++---------+------+----------+
+| name    | age  | CourseID |
++---------+------+----------+
+| Alice   |   20 |        1 |
+| Bob     |   22 |        2 |
+| Charlie |   21 |        2 |
+| David   |   23 |        3 |
+| Eve     |   24 |        1 |
++---------+------+----------+
+5 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source 8_INDEXES.sql
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create index i1 on students(rollno); 
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> drop index i1 on students;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> source 8_INDEXES.sql             
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
++----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+  
+| Table          | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |  
++----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+  
+| student_course |          0 | i3       |            1 | RollNo      | A         |           8 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |  
++----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+  
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
