@@ -1,0 +1,58 @@
+MongoDB -
+
+MySQL -> RDBMS -> fix structure -> table (no. of rows) -> no. of columns
+
+MongoDB -> No SQL               -> collection (no. of documents) -> field
+
+
+create database 
+use database_name  -> no need to create it , it automaticaly create
+
+create collections
+db.createCollection("student")
+
+insert in collection
+db.collection_name.insert({"key":value, "key":"value"})
+db.collection_name.insertOne([{"key1":value1, "key2":"value2"}, {"key":value, "key":"value"}])
+db.collection_name.insertMany()
+
+Display
+db.collection_name.find()
+db.collection_name.find({"rollno":1})
+db.collection_name.find().pretty()
+
+Update
+db.collection_name.Update({"rollno":1}, {$set:{"age":21}}) => DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+
+How to add new field in exiting document
+db.collection_name.update({"rollno":4}, {$set:{"phone":232423424}}, {multi:false})
+
+How to add new field in exiting documents
+db.collection_name.update({}, {$set:{"phone":232423424}}, {multi:true})
+
+
+delete
+db.collection_name.remove({"rollno":4}) => DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+
+delete all 
+db.collection_name.remove({})
+
+delete collection
+db.collection_name.drop()
+
+
+show dbs
+db -> current database
+db.stats() -> all info of database
+db.dropDatabase()
+
+db.student.update(
+  {"age":{$gt:18}},
+  {$set:{{"status":"A"}}},
+  {multi:true}
+)
+
+$gt
+$lt
+$le
+$ge

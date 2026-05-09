@@ -1,0 +1,79 @@
+implement mongodb quire for following problems
+1) insert 5 employe document with fiedl emp_id, name, salary, department, age
+2) find employe working and hr salary > 30,000
+3) rtive employe working in it or finance
+4) display employe whose age is not > 40 
+5) find employe where salary > 25,000 and age < 35
+6) find employes where name starts with "s"
+7) ritrive employes where name contains "par"
+8) delete employes where salary > 50,000
+9) delete employes where department is computer 
+10) delete all the documents and colletions from the database
+
+
+1) Insert 5 employee documents
+db.employees.insertMany([
+  { emp_id: 1, name: "Sanjay", salary: 40000, department: "HR", age: 30 },
+  { emp_id: 2, name: "Parag", salary: 28000, department: "IT", age: 25 },
+  { emp_id: 3, name: "Sneha", salary: 35000, department: "Finance", age: 32 },
+  { emp_id: 4, name: "Amit", salary: 22000, department: "IT", age: 28 },
+  { emp_id: 5, name: "Suresh", salary: 55000, department: "Computer", age: 45 }
+]);
+
+2) Find employees working in HR with salary > 30,000
+db.employees.find({
+  department: "HR",
+  salary: { $gt: 30000 }
+});
+
+3) Retrieve employees working in IT or Finance
+db.employees.find({
+  department: { $in: ["IT", "Finance"] }
+});
+OR
+db.employees.find({
+  $or:[]
+})
+
+4) Display employees whose age is NOT > 40 (i.e., age ≤ 40)
+db.employees.find({
+  age: { $lte: 40 }
+});
+
+5) Find employees where salary > 25,000 AND age < 35
+db.employees.find({
+  salary: { $gt: 25000 },
+  age: { $lt: 35 }
+});
+
+6) Find employees where name starts with "S"
+db.employees.find({
+  name: { $regex: "^S", $options: "i" }
+});
+
+7) Retrieve employees where name contains "par"
+db.employees.find({
+  name: { $regex: "par", $options: "i" }
+});
+
+8) Delete employees where salary > 50,000
+db.employees.deleteMany({
+  salary: { $gt: 50000 }
+});
+
+9) Delete employees where department is "Computer"
+db.employees.deleteMany({
+  department: "Computer"
+});
+
+10) Delete all documents and collections from the database
+
+Delete all documents in collection:
+db.employees.deleteMany({});
+
+Drop the collection:
+db.employees.drop();
+
+Drop the entire database:
+use yourDatabaseName;
+db.dropDatabase();

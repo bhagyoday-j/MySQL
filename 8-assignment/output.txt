@@ -1,0 +1,260 @@
+PS D:\CODING\SQL\8-assignment> mongosh
+Current Mongosh Log ID: 69df213d72260a35ac718dc3
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.5
+Using MongoDB:          8.0.11
+Using Mongosh:          2.5.5
+mongosh 2.8.2 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-04-06T10:48:00.711+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+Sahara14           180.00 KiB
+Sahara2            156.00 KiB
+SpotifyClone        76.00 KiB
+admin               40.00 KiB
+auth_app           144.00 KiB
+college_project     16.00 KiB
+config              60.00 KiB
+interviewai        232.00 KiB
+local              100.00 KiB
+mern-ecommerce      36.00 KiB
+mydb                24.00 KiB
+news               156.00 KiB
+news-cms-blog      452.00 KiB
+sahara             392.00 KiB
+sanjivani-chatbot  168.00 KiB
+smart-agriculture  432.00 KiB
+sotify              36.00 KiB
+students-crud      252.00 KiB
+user-crud          180.00 KiB
+yourdbname         108.00 KiB
+test> create db assingment8
+Uncaught:
+SyntaxError: Missing semicolon. (1:6)
+
+> 1 | create db assingment8
+    |       ^
+  2 |
+
+test> use assingment8
+switched to db assingment8
+assingment8> show collections
+
+assingment8> db.createCollection("student")
+{ ok: 1 }
+assingment8> show collections
+student
+assingment8> db.student.insert({"rollno":1, "name":"xyz", "class":"SY"})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('69df286672260a35ac718dc4') }
+}
+assingment8> db.student.insert({"rollno":2, "name":"abc", "class":"TY", "age":20, "marks":44})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('69df28fb72260a35ac718dc5') }
+}
+assingment8> db.student.find()
+[
+  {
+    _id: ObjectId('69df286672260a35ac718dc4'),
+    rollno: 1,
+    name: 'xyz',
+    class: 'SY'
+  },
+  {
+    _id: ObjectId('69df28fb72260a35ac718dc5'),
+    rollno: 2,
+    name: 'abc',
+    class: 'TY',
+    age: 20,
+    marks: 44
+  }
+]
+assingment8> db.student.insertMany([{"rollno":4, "name":"abc", "class":"SY"}, {"rollno":5, "name":"pqr", "class":"TY", "Marks":88}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69df2a1472260a35ac718dc6'),
+    '1': ObjectId('69df2a1472260a35ac718dc7')
+  }
+}
+assingment8> db.student.find()
+[
+  {
+    _id: ObjectId('69df286672260a35ac718dc4'),
+    rollno: 1,
+    name: 'xyz',
+    class: 'SY'
+  },
+  {
+    _id: ObjectId('69df28fb72260a35ac718dc5'),
+    rollno: 2,
+    name: 'abc',
+    class: 'TY',
+    age: 20,
+    marks: 44
+  },
+  {
+    _id: ObjectId('69df2a1472260a35ac718dc6'),
+    rollno: 4,
+    name: 'abc',
+    class: 'SY'
+  },
+  {
+    _id: ObjectId('69df2a1472260a35ac718dc7'),
+    rollno: 5,
+    name: 'pqr',
+    class: 'TY',
+    Marks: 88
+  }
+]
+assingment8> db.student.find({"rollno":1})
+[
+  {
+    _id: ObjectId('69df286672260a35ac718dc4'),
+    rollno: 1,
+    name: 'xyz',
+    class: 'SY'
+  }
+]
+assingment8> db.student.find().pretty()
+[
+  {
+    _id: ObjectId('69df286672260a35ac718dc4'),
+    rollno: 1,
+    name: 'xyz',
+    class: 'SY'
+  },
+  {
+    _id: ObjectId('69df28fb72260a35ac718dc5'),
+    rollno: 2,
+    name: 'abc',
+    class: 'TY',
+    age: 20,
+    marks: 44
+  },
+  {
+    _id: ObjectId('69df2a1472260a35ac718dc6'),
+    rollno: 4,
+    name: 'abc',
+    class: 'SY'
+  },
+  {
+    _id: ObjectId('69df2a1472260a35ac718dc7'),
+    rollno: 5,
+    name: 'pqr',
+    class: 'TY',
+    Marks: 88
+  }
+]
+assingment8> db.student.update({"rollno":1}, {$set:{"age":21}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+assingment8> db.student.find({"rollno":1})
+[
+  {
+    _id: ObjectId('69df286672260a35ac718dc4'),
+    rollno: 1,
+    name: 'xyz',
+    class: 'SY',
+    age: 21
+  }
+]
+assingment8> db.student.update({"rollno":4}, {$set:{"phone":232423424}}, {multi:false})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+assingment8> db.student.find({"rollno":1})
+[
+  {
+    _id: ObjectId('69df286672260a35ac718dc4'),
+    rollno: 1,
+    name: 'xyz',
+    class: 'SY',
+    age: 21
+  }
+]
+assingment8> db.student.find({"rollno":4})
+[
+  {
+    _id: ObjectId('69df2a1472260a35ac718dc6'),
+    rollno: 4,
+    name: 'abc',
+    class: 'SY',
+    phone: 232423424
+  }
+]
+assingment8> db.student.update({}, {$set:{"phone":232423424}}, {multi:true})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+assingment8> db.student.find()
+[
+  {
+    _id: ObjectId('69df286672260a35ac718dc4'),
+    rollno: 1,
+    name: 'xyz',
+    class: 'SY',
+    age: 21,
+    phone: 232423424
+  },
+  {
+    _id: ObjectId('69df28fb72260a35ac718dc5'),
+    rollno: 2,
+    name: 'abc',
+    class: 'TY',
+    age: 20,
+    marks: 44,
+    phone: 232423424
+  },
+  {
+    _id: ObjectId('69df2a1472260a35ac718dc6'),
+    rollno: 4,
+    name: 'abc',
+    class: 'SY',
+    phone: 232423424
+  },
+  {
+    _id: ObjectId('69df2a1472260a35ac718dc7'),
+    rollno: 5,
+    name: 'pqr',
+    class: 'TY',
+    Marks: 88,
+    phone: 232423424
+  }
+]
+assingment8> db.student.remove({"rollno":4})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+assingment8> db.student.find({"rollno":4})
+
+assingment8> db.student.remove({})
+{ acknowledged: true, deletedCount: 3 }
+assingment8> db.student.find()
+
+assingment8> db.student.drop()
+true
+assingment8> show collections
+
+assingment8>

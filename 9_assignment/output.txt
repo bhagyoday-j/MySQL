@@ -1,0 +1,247 @@
+PS C:\Users\bmj31\OneDrive\Desktop> mongosh
+Current Mongosh Log ID: 69e85d0b34002b0581718dc3
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.5
+Using MongoDB:          8.0.11
+Using Mongosh:          2.5.5
+mongosh 2.8.2 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-04-21T20:57:30.292+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use assingment9
+switched to db assingment9
+assingment9> create collection ("employees")
+Uncaught:
+SyntaxError: Missing semicolon. (1:6)
+
+> 1 | create collection ("employees")
+    |       ^
+  2 |
+
+assingment9> create collection ("employees");
+Uncaught:
+SyntaxError: Missing semicolon. (1:6)
+
+> 1 | create collection ("employees");
+    |       ^
+  2 |
+
+assingment9> db.createCollection("employees")
+{ ok: 1 }
+assingment9> db.employees.insertMany([
+...   { emp_id: 1, name: "Sanjay", salary: 40000, department: "HR", age: 30 },
+...   { emp_id: 2, name: "Parag", salary: 28000, department: "IT", age: 25 },
+...   { emp_id: 3, name: "Sneha", salary: 35000, department: "Finance", age: 32 },
+...   { emp_id: 4, name: "Amit", salary: 22000, department: "IT", age: 28 },
+...   { emp_id: 5, name: "Suresh", salary: 55000, department: "Computer", age: 45 }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69e85dde34002b0581718dc4'),
+    '1': ObjectId('69e85dde34002b0581718dc5'),
+    '2': ObjectId('69e85dde34002b0581718dc6'),
+    '3': ObjectId('69e85dde34002b0581718dc7'),
+    '4': ObjectId('69e85dde34002b0581718dc8')
+  }
+}
+assingment9> db.employees.find({
+...   department: "HR",
+...   salary: { $gt: 30000 }
+... });
+[
+  {
+    _id: ObjectId('69e85dde34002b0581718dc4'),
+    emp_id: 1,
+    name: 'Sanjay',
+    salary: 40000,
+    department: 'HR',
+    age: 30
+  }
+]
+assingment9> db.employees.find({
+...   department: { $in: ["IT", "Finance"] }
+... });
+[
+  {
+    _id: ObjectId('69e85dde34002b0581718dc5'),
+    emp_id: 2,
+    name: 'Parag',
+    salary: 28000,
+    department: 'IT',
+    age: 25
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc6'),
+    emp_id: 3,
+    name: 'Sneha',
+    salary: 35000,
+    department: 'Finance',
+    age: 32
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc7'),
+    emp_id: 4,
+    name: 'Amit',
+    salary: 22000,
+    department: 'IT',
+    age: 28
+  }
+]
+assingment9> db.employees.find({
+...   department: { $in: ["IT", "Finance"] }
+... });
+[
+  {
+    _id: ObjectId('69e85dde34002b0581718dc5'),
+    emp_id: 2,
+    name: 'Parag',
+    salary: 28000,
+    department: 'IT',
+    age: 25
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc6'),
+    emp_id: 3,
+    name: 'Sneha',
+    salary: 35000,
+    department: 'Finance',
+    age: 32
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc7'),
+    emp_id: 4,
+    name: 'Amit',
+    salary: 22000,
+    department: 'IT',
+    age: 28
+  }
+]
+assingment9> db.employees.find({
+...   age: { $lte: 40 }
+... });
+[
+  {
+    _id: ObjectId('69e85dde34002b0581718dc4'),
+    emp_id: 1,
+    name: 'Sanjay',
+    salary: 40000,
+    department: 'HR',
+    age: 30
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc5'),
+    emp_id: 2,
+    name: 'Parag',
+    salary: 28000,
+    department: 'IT',
+    age: 25
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc6'),
+    emp_id: 3,
+    name: 'Sneha',
+    salary: 35000,
+    department: 'Finance',
+    age: 32
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc7'),
+    emp_id: 4,
+    name: 'Amit',
+    salary: 22000,
+    department: 'IT',
+    age: 28
+  }
+]
+assingment9> db.employees.find({
+...   salary: { $gt: 25000 },
+...   age: { $lt: 35 }
+... });
+[
+  {
+    _id: ObjectId('69e85dde34002b0581718dc4'),
+    emp_id: 1,
+    name: 'Sanjay',
+    salary: 40000,
+    department: 'HR',
+    age: 30
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc5'),
+    emp_id: 2,
+    name: 'Parag',
+    salary: 28000,
+    department: 'IT',
+    age: 25
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc6'),
+    emp_id: 3,
+    name: 'Sneha',
+    salary: 35000,
+    department: 'Finance',
+    age: 32
+  }
+]
+assingment9> db.employees.find({
+...   name: { $regex: "^S", $options: "i" }
+... });
+[
+  {
+    _id: ObjectId('69e85dde34002b0581718dc4'),
+    emp_id: 1,
+    name: 'Sanjay',
+    salary: 40000,
+    department: 'HR',
+    age: 30
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc6'),
+    emp_id: 3,
+    name: 'Sneha',
+    salary: 35000,
+    department: 'Finance',
+    age: 32
+  },
+  {
+    _id: ObjectId('69e85dde34002b0581718dc8'),
+    emp_id: 5,
+    name: 'Suresh',
+    salary: 55000,
+    department: 'Computer',
+    age: 45
+  }
+]
+assingment9> db.employees.find({
+...   name: { $regex: "par", $options: "i" }
+... });
+[
+  {
+    _id: ObjectId('69e85dde34002b0581718dc5'),
+    emp_id: 2,
+    name: 'Parag',
+    salary: 28000,
+    department: 'IT',
+    age: 25
+  }
+]
+assingment9> db.employees.deleteMany({
+...   salary: { $gt: 50000 }
+... });
+{ acknowledged: true, deletedCount: 1 }
+assingment9> db.employees.deleteMany({
+...   department: "Computer"
+... });
+{ acknowledged: true, deletedCount: 0 }
+assingment9> db.employees.deleteMany({});
+{ acknowledged: true, deletedCount: 4 }
+assingment9> db.employees.drop();
+true
+assingment9> db.dropDatabase();
+{ ok: 1, dropped: 'assingment9' }
+assingment9>
