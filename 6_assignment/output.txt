@@ -1,0 +1,222 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\bmj31\OneDrive\Desktop> mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 90
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++-----------------------+
+| Database              |
++-----------------------+
+| assi5                 |
+| assignment3           |
+| assignment4           |
+| assignment5           |
+| bhagyoday118          |
+| cia1                  |
+| college               |
+| gui_builder_db        |
+| information_schema    |
+| midterm               |
+| mysql                 |
+| performance_schema    |
+| practice              |
+| sales                 |
+| sys                   |
+| todo_app              |
+| vehicle_rental_system |
++-----------------------+
+17 rows in set (0.08 sec)
+
+mysql> create database abcxyz;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> use abcxyz
+Database changed
+mysql> show tables
+    -> ;
+Empty set (0.03 sec)
+
+mysql> create table abc;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table abc(int a, varchar(2) b);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int a, varchar(2) b)' at line 1
+mysql> create table abc(a int, b varchar(2));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> delimiter \\
+ERROR:
+DELIMITER cannot contain a backslash character
+mysql> delimiter //
+mysql> create procedure abc(a int)
+    -> begin
+    -> declere
+    -> end;
+    -> ;
+    -> delimiter;
+    -> ^C
+mysql> drop database abcxyz;
+    -> delimiter;
+    ->
+    ->
+    -> ^C
+mysql> delimiter;
+    -> ^C
+mysql> show tables;
+    -> end;
+    -> end //
++------------------+
+| Tables_in_abcxyz |
++------------------+
+| abc              |
++------------------+
+1 row in set (0.03 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end;
+end' at line 1
+mysql> delimiter //
+mysql> drop dtabase abcxyz;
+    -> end //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dtabase abcxyz;
+end' at line 1
+mysql> show databases;
+    -> //
++-----------------------+
+| Database              |
++-----------------------+
+| abcxyz                |
+| assi5                 |
+| assignment3           |
+| assignment4           |
+| assignment5           |
+| bhagyoday118          |
+| cia1                  |
+| college               |
+| gui_builder_db        |
+| information_schema    |
+| midterm               |
+| mysql                 |
+| performance_schema    |
+| practice              |
+| sales                 |
+| sys                   |
+| todo_app              |
+| vehicle_rental_system |
++-----------------------+
+18 rows in set (0.03 sec)
+
+mysql> drop database abcxyz //
+Query OK, 1 row affected (0.18 sec)
+
+mysql> delimiter ;
+mysql> create database cursors;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use cursors
+Database changed
+mysql> create table stu1(roll int, name varchar(30), class varchar(20));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table stu2(roll int, name varchar(30), class varchar(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> delimiter //
+mysql> create procedure copy_to()
+    -> begin
+    ->   declare r int;
+    ->   declare n varchar(30);
+    ->   declare c varchar(29);
+    ->   declare stu_cursor cursor
+    ->   for
+    ->   select * from stu1;
+    ->   declare continue handler
+    ->   ^C
+mysql> create procedure copy_to()
+    -> begine
+    -> ^C
+mysql> create procedure copy_to()
+    ->   begin
+    ->     declare vfinished int default 0;
+    ->     declare r int;
+    ->     declare n varchar(30);
+    ->     declare c varchar(29);
+    ->     declare stu_cursor cursor
+    ->     for
+    ->     select * from stu1;
+    ->     declare continue handler
+    ->     for not found set vfinished = 1;
+    ->
+    ->     open stu_cursor;
+    ->     getdata : loop
+    ->       fetch stu_cursor into r, n, c;
+    ->       if vfinished = 1 then
+    ->          leave getdata;
+    ->       end if;
+    ->       insert into stu2 value(r, n, c);
+    ->     end loop getdata;
+    ->     close stu_cursor;
+    ->   end //
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into stu1 values(1, 'a', 'sy');
+    -> //
+Query OK, 1 row affected (0.05 sec)
+
+mysql> delimiter ;
+mysql> insert into stu1 values(2, 'b', 'ty');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stu1 values(3, 'c', 'fy');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from stu1;
++------+------+-------+
+| roll | name | class |
++------+------+-------+
+|    1 | a    | sy    |
+|    2 | b    | ty    |
+|    3 | c    | fy    |
++------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from stu2;
+Empty set (0.00 sec)
+
+mysql> call copy_to();
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from stu2;
++------+------+-------+
+| roll | name | class |
++------+------+-------+
+|    1 | a    | sy    |
+|    2 | b    | ty    |
+|    3 | c    | fy    |
++------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from stu1;
++------+------+-------+
+| roll | name | class |
++------+------+-------+
+|    1 | a    | sy    |
+|    2 | b    | ty    |
+|    3 | c    | fy    |
++------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql>

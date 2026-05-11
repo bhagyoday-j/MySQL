@@ -46,3 +46,28 @@ delimiter ;
 call proc_copy();
 select * from student2;
 
+
+
+create procedure copy_to()
+  begin
+    declare vfinished int default 0;
+    declare r int;
+    declare n varchar(30);
+    declare c varchar(29);
+    declare stu_cursor cursor
+    for
+    select * from stu1;
+    declare continue handler
+    for not found set vfinished = 1;
+
+    open stu_cursor;
+    getdata : loop
+      fetch stu_cursor into r, n, c;
+      if vfinished = 1 then 
+         leave getdata;
+      end if;
+      insert into stu2 value(r, n, c);
+    end loop getdata;
+    close stu_cursor;
+  end //
+    

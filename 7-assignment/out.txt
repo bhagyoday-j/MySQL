@@ -1,0 +1,110 @@
+mysql> create database triggers;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use triggers;
+Database changed
+mysql> create table product(product_id int, product_name varchar(30), supplier_name varchar(30), unit_price int);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table product_price_history(product_id int, product_name varchar(30), supplier_name varchar(30), unit_price int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into product values(1, 'a', 'as', 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into product values(2, 'b', 'bs', 2);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into product values(3, 'c', 'cs', 3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from product;
++------------+--------------+---------------+------------+
+| product_id | product_name | supplier_name | unit_price |
++------------+--------------+---------------+------------+
+|          1 | a            | as            |          1 |
+|          2 | b            | bs            |          2 |
+|          3 | c            | cs            |          3 |
++------------+--------------+---------------+------------+
+3 rows in set (0.02 sec)
+
+mysql> select * from product_price_history;
+Empty set (0.00 sec)
+
+mysql> delimiter //
+mysql> create trigger price_history_trigger
+    -> before
+    -> update
+    -> of unit_price
+    -> on product
+    -> for each row
+    -> begin
+    ->   insert into product_price_history values(:old.product_id, :old.product_name, :old.supplier_name, :old.unit_price);
+    -> end //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'of unit_price
+on product
+for each row
+begin
+  insert into product_price_history ' at line 4
+mysql> delimiter ;
+mysql> delimiter //
+mysql> create trigger price_history_trigger
+    -> before
+    -> update
+    -> of unit_price
+    -> on product
+    -> for each row
+    -> begin
+    ->   insert into product_price_history values(old.product_id, old.product_name, old.supplier_name, old.unit_price);
+    -> end //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'of unit_price
+on product
+for each row
+begin
+  insert into product_price_history ' at line 4
+mysql> delimiter ;
+mysql> delimiter //
+mysql> create trigger price_history_trigger
+    -> before
+    -> update
+    -> on product
+    -> for each row
+    -> begin
+    ->   insert into product_price_history values(old.product_id, old.product_name, old.supplier_name, old.unit_price);
+    -> end //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> select * from product;
++------------+--------------+---------------+------------+
+| product_id | product_name | supplier_name | unit_price |
++------------+--------------+---------------+------------+
+|          1 | a            | as            |          1 |
+|          2 | b            | bs            |          2 |
+|          3 | c            | cs            |          3 |
++------------+--------------+---------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from product_price_history;
+Empty set (0.00 sec)
+
+mysql> update product set unit_price = 500 where product_id = '5';
+Query OK, 0 rows affected (0.03 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from product_price_history;
+Empty set (0.00 sec)
+
+mysql> update product set unit_price = 500 where product_id = '3';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from product_price_history;
++------------+--------------+---------------+------------+
+| product_id | product_name | supplier_name | unit_price |
++------------+--------------+---------------+------------+
+|          3 | c            | cs            |          3 |
++------------+--------------+---------------+------------+
+1 row in set (0.02 sec)
+
+mysql>
